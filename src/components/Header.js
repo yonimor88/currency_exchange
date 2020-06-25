@@ -3,7 +3,7 @@ import logo from './logo.png';
 
 function Header() {
     return (
-        <div>
+        <div className='Header'>
            <img src={logo} className="Header-logo" alt="logo" />
             <p>  By Jonathan Mordecayov</p>
         </div>
