@@ -4,21 +4,27 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 function Exchange() {
     const [currency, setCurrency]= useState([{type:'dollar', value:4},{type:'euro', value:3},{type:'shekel', value:1}])
-    const [firstSelect, setFirstSelect]=useState('')
-    const [secondSelect, setSecondSelect]=useState('')
+    const [firstSelect, setFirstSelect]=useState(0)
+    const [secondSelect, setSecondSelect]=useState(0)
     const [result, setResult]=useState(0)
     const [input, setInput]= useState(null)
-
+    const [list, setList] = useState([{firstCurrency:'', secondCurrency:'', amount:''}])
+    
   const firstRoomType = (e)=>{
-    setFirstSelect(e.target.value);
+    setFirstSelect({value:e.target.value, type:e.target.type});
   }
 
   const secondRoomType = (e)=>{
-    setSecondSelect(e.target.value)}
+    setSecondSelect(e.target.value)
+  }
 
-  
   const start = () =>{
-    
+    setResult(input*firstSelect/secondSelect)
+    setList({firstCurrency:firstSelect, secondCurrency:secondSelect, amount:result})
+  }
+
+  const validInput = (e) =>{
+    setInput(e.target.value)
   }
 
     return (
@@ -29,10 +35,10 @@ function Exchange() {
         onChange={firstRoomType}>
         <option hidden disabled selected value>Type{" "}</option>
         {
-        currency.map(item =><option value={item.type} key={item.type}>{item.type}</option>)
+        currency.map(item =><option value={item.value} key={item.type}>{item.type}</option>)
         }
       </select>
-      <input placeholder="Enter Amount" onChange={(e)=>setInput(e.target.value)}></input>
+      <input required type="number" placeholder="Enter Amount" onChange={validInput}></input>
       <br />
       To :<select
         name="type"
@@ -40,7 +46,7 @@ function Exchange() {
         onChange={secondRoomType}>
         <option hidden disabled selected value>Type{" "}</option>
         {
-        currency.map(item =><option value={item.type} key={item.type}>{item.type}</option>)
+        currency.map(item =><option value={item.value} key={item.type}>{item.type}</option>)
         }
       </select>
       <br />
