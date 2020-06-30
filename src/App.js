@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Header from "./components/Header";
 import Exchange from "./components/Exchange";
 import Update from "./components/Update";
@@ -12,26 +12,18 @@ function App() {
       <Router>
       <Header />
       <Switch>
-      <Route
-            exact
-            path="/"
-            component={() => {
+      <Route exact path="/" component={() => {
               return (
                 <Exchange
                 />
               );
-            }}
-          />
-          <Route
-            exact
-            path="/Update"
-            component={() => {
+            }}/>
+          <Route exact path="/Update" component={() => {
               return (
                 <Update
                 />
               );
-            }}
-          />
+            }}/>
       </Switch>
       </Router>
     </div>

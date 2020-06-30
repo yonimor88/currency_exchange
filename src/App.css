@@ -14,7 +14,7 @@
 
 .Exchange{
   border-style: solid;
-  height: 400px;
+  height: auto;
   width: 100%;
   justify-content: space-evenly;
 }
@@ -76,4 +76,8 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 select{
   text-align-last: center;
   
+}
+
+.inList{
+border-style: groove;
 }
